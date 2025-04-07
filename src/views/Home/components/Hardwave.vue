@@ -11,6 +11,7 @@ import { ref, onMounted } from 'vue'
 const value = ref(true)
 const span = 8
 
+const batteryCharge = ref(100);
 
 import { Minus, Plus } from '@element-plus/icons-vue'
 
@@ -55,9 +56,10 @@ function reset() {
 </script>
 
 <template>
+    <!--电机转速等其他的三个信息-->
     <el-row>
         <el-col :span="8">
-            <el-countdown title="Start to grab" :value="value" />
+            <el-countdown title="电机转速" :value="value" />
         </el-col>
         <el-col :span="8">
             <el-countdown title="Remaining VIP time" format="HH:mm:ss" :value="value1" />
@@ -79,11 +81,12 @@ function reset() {
             <div class="countdown-footer">{{ value2.format('YYYY-MM-DD') }}</div>
         </el-col>
     </el-row>
+    <br>
     <!--硬件状态的三个基本功能-->
     <el-row :gutter="16">
         <el-col :span="span">
             <div class="statistic-card">
-                <el-statistic :value="96">
+                <el-statistic :value="batteryCharge">
                     <template #title>
                         <div style="display: inline-flex; align-items: center">
                             剩余电量
@@ -96,7 +99,7 @@ function reset() {
                     <div class="footer-item">
                         <span>目前已消耗</span>
                         <span class="red">
-                            4%
+                            {{ 100 - batteryCharge }}
                             <el-icon>
                                 <CaretBottom />
                             </el-icon>
@@ -170,13 +173,38 @@ function reset() {
                 </div>
             </div>
         </el-col>
+        <br>
+        <!--环形进度条-->
+        <el-row :gutter="120">
+            <el-col :span="6">
+                <el-progress type="dashboard" :percentage="80">
+                    <template #default="{ percentage }">
+                        <span class="percentage-value">{{ batteryCharge }}%</span>
+                        <br>
+                        <span class="percentage-label">电池电量</span>
+                    </template>
+                </el-progress>
+            </el-col>
 
-        <el-col>
+            <el-col :span="6">
+                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
+            </el-col>
+
+            <el-col :span="6">
+                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
+            </el-col>
+
+            <el-col :span="6">
+                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
+            </el-col>
             <div class="demo-progress">
-                <el-progress type="dashboard" :percentage="percentage2" :color="colors" />
-                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
-                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
-                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
+
+
+
+
+
+
+
                 <div>
                     <el-button-group>
                         <el-button :icon="Minus" @click="decrease" />
@@ -189,16 +217,14 @@ function reset() {
                     </el-button-group>
                 </div>
             </div>
-        </el-col>
-
+        </el-row>
         <el-col>
             <div class="demo-progress">
                 <el-progress :percentage="50" :stroke-width="15" striped />
                 <el-progress :percentage="30" :stroke-width="15" status="warning" striped striped-flow />
                 <el-progress :percentage="100" :stroke-width="15" status="success" striped striped-flow
                     :duration="10" />
-                <el-progress :percentage="percentage" :stroke-width="15" status="exception" striped striped-flow
-                    :duration="duration" />
+
                 <el-button-group>
                     <el-button :icon="Minus" @click="decrease" />
                     <el-button :icon="Plus" @click="increase" />

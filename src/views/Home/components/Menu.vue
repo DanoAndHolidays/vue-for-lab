@@ -1,11 +1,7 @@
 <script lang="ts" setup>
-
-import Hardwave from './Hardwave.vue'
-
 import {
     Document,
     Menu as IconMenu,
-    Location,
     Setting,
 } from '@element-plus/icons-vue'
 const handleOpen = (key: string, keyPath: string[]) => {
@@ -52,12 +48,10 @@ const handleClose = (key: string, keyPath: string[]) => {
             </el-menu>
         </el-col>
     </el-row>
-    <el-menu :default-openeds="['1', '3']">
+    <el-menu :default-openeds="['1']">
         <el-sub-menu index="1">
             <template #title>
-                <el-icon>
-                    <message />
-                </el-icon>Navigator One
+                Navigator One
             </template>
             <el-menu-item-group>
                 <template #title>Group 1</template>
@@ -74,7 +68,7 @@ const handleClose = (key: string, keyPath: string[]) => {
         </el-sub-menu>
         <el-sub-menu index="2">
             <template #title>
-                <el-icon><icon-menu /></el-icon>Navigator Two
+                Navigator Two
             </template>
             <el-menu-item-group>
                 <template #title>Group 1</template>
@@ -91,9 +85,7 @@ const handleClose = (key: string, keyPath: string[]) => {
         </el-sub-menu>
         <el-sub-menu index="3">
             <template #title>
-                <el-icon>
-                    <setting />
-                </el-icon>Navigator Three
+                Navigator Three
             </template>
             <el-menu-item-group>
                 <template #title>Group 1</template>
