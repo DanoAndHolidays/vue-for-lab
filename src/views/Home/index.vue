@@ -1,9 +1,10 @@
 <script setup>
+import Header from './components/Header.vue';
 import Hardwave from './components/Hardwave.vue';
 import Menu from './components/Menu.vue';
 </script>
 <template>
-    <h3>nihao</h3>
+    <Header />
     <Menu />
     <Hardwave />
 </template>

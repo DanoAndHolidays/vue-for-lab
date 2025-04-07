@@ -1,30 +1,33 @@
 <template>
+
+    <h3></h3>
     <el-row class="tac">
-        <el-col :span="12">
-            <h5 class="mb-2">控制面板</h5>
+        <el-col :span="2">
+
             <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-                background-color="#ffffff" popper-effect="dark">
+                text-color="#fff" background-color="#545c64" active-text-color="#ffd04b">
                 <el-menu-item index="1">
                     <el-icon>
-                        <icon-menu />
+                        <setting />
                     </el-icon>
                     <span>硬件状态</span>
                 </el-menu-item>
                 <el-menu-item index="2">
                     <el-icon>
-                        <icon-menu />
+                        <document />
+
                     </el-icon>
                     <span>数据分析</span>
                 </el-menu-item>
                 <el-menu-item index="3">
                     <el-icon>
-                        <document />
+                        <icon-menu />
                     </el-icon>
                     <span>待定功能</span>
                 </el-menu-item>
                 <el-menu-item index="4">
                     <el-icon>
-                        <setting />
+                        <icon-menu />
                     </el-icon>
                     <span>待定功能</span>
                 </el-menu-item>
