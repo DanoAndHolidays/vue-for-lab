@@ -4,12 +4,24 @@ import Hardwave from './components/Hardwave.vue';
 import Menu from './components/Menu.vue';
 </script>
 <template>
-    <Header />
-    <Menu />
-    <Hardwave />
+
+    <el-container>
+        <el-header>
+            <Header />
+        </el-header>
+        <el-container class="layout-container-demo" style="height: 90vh">
+            <el-aside width="200px">
+                <el-scrollbar>
+                    <Menu />
+                </el-scrollbar>
+            </el-aside>
+            <el-container>
+                <el-main>
+                    <Hardwave />
+                </el-main>
+            </el-container>
+
+        </el-container>
+    </el-container>
 </template>
-<style>
-h3 {
-    size: 150px;
-}
-</style>
+<style></style>
