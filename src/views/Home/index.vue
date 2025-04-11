@@ -17,7 +17,7 @@ import Menu from './components/Menu.vue';
             </el-aside>
             <el-container>
                 <el-main>
-                    <Hardwave />
+                    <RouterView />
                 </el-main>
             </el-container>
 

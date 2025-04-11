@@ -23,14 +23,20 @@ const handleClose = (key: string, keyPath: string[]) => {
                     <el-icon>
                         <setting />
                     </el-icon>
-                    <span>硬件状态</span>
+                    <span>
+                        <RouterLink to="/">
+                            硬件状态
+                        </RouterLink>
+                    </span>
                 </el-menu-item>
                 <el-menu-item index="2">
                     <el-icon>
                         <document />
 
                     </el-icon>
-                    <span>数据分析</span>
+                    <span>
+                        <RouterLink to="/Data">数据分析</RouterLink>
+                    </span>
                 </el-menu-item>
                 <el-menu-item index="3">
                     <el-icon>

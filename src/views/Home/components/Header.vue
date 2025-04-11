@@ -1,7 +1,9 @@
 <template>
     <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" background-color="#545c64"
         text-color="#fff" active-text-color="#ffd04b" @select="handleSelect">
-        <el-menu-item index="1">分析监测终端界面</el-menu-item>
+        <el-menu-item index="1">
+            <RouterLink to="/">分析监测终端界面</RouterLink>
+        </el-menu-item>
         <el-sub-menu index="2">
             <template #title>终端设置</template>
             <el-menu-item index="2-1">item one</el-menu-item>
