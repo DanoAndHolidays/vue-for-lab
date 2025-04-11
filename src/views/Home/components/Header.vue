@@ -16,7 +16,9 @@
         </el-sub-menu>
         <el-menu-item index="3" disabled>Info</el-menu-item>
         <el-menu-item index="4" disabled>待定功能</el-menu-item>
-        <el-menu-item index="5">产品介绍</el-menu-item>
+        <el-menu-item index="5">
+            <RouterLink to="/Store">产品介绍</RouterLink>
+        </el-menu-item>
     </el-menu>
 </template>
 

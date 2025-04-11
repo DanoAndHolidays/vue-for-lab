@@ -59,7 +59,7 @@ function reset() {
     <!--电机转速等其他的三个信息-->
     <el-row>
         <el-col :span="8">
-            <el-countdown title="电机转速" :value="value" />
+            <el-countdown title="电机转速" :value="value1" />
         </el-col>
         <el-col :span="8">
             <el-countdown title="Remaining VIP time" format="HH:mm:ss" :value="value1" />

@@ -18,7 +18,7 @@ const handleClose = (key: string, keyPath: string[]) => {
     <h3></h3>
     <el-row align="align">
         <el-col>
-            <el-menu default-active="2" @open="handleOpen" @close="handleClose" active-text-color="#ffd04b">
+            <el-menu default-active="1" @open="handleOpen" @close="handleClose" active-text-color="#ffd04b">
                 <el-menu-item index="1">
                     <el-icon>
                         <setting />
