@@ -5,15 +5,17 @@ import {
     CaretTop,
     Warning,
 } from '@element-plus/icons-vue'
-
 import { ref, onMounted } from 'vue'
+import { Minus, Plus } from '@element-plus/icons-vue'
+import dayjs from 'dayjs'
+import { Calendar } from '@element-plus/icons-vue'
 
 const value = ref(true)
-const span = 8
-
+//设置span
+const span = 6
+//电池电量
 const batteryCharge = ref(100);
 
-import { Minus, Plus } from '@element-plus/icons-vue'
 
 const percentage = ref(10)
 const percentage2 = ref(0)
@@ -43,8 +45,6 @@ onMounted(() => {
         percentage2.value = (percentage2.value % 100) + 10
     }, 500)
 })
-import dayjs from 'dayjs'
-import { Calendar } from '@element-plus/icons-vue'
 
 
 const value1 = ref(Date.now() + 1000 * 60 * 60 * 24 * 2)
@@ -53,94 +53,16 @@ const value2 = ref(dayjs().add(1, 'month').startOf('month'))
 function reset() {
     value1.value = Date.now() + 1000 * 60 * 60 * 24 * 2
 }
+
 </script>
 
 <template>
-    <!--电机转速等其他的三个信息-->
-    <el-row>
-        <el-col :span="8">
-            <el-countdown title="电机转速" :value="value1" />
-        </el-col>
-        <el-col :span="8">
-            <el-countdown title="Remaining VIP time" format="HH:mm:ss" :value="value1" />
-            <el-button class="countdown-footer" type="primary" @click="reset">
-                Reset
-            </el-button>
-        </el-col>
-        <el-col :span="8">
-            <el-countdown format="DD [days] HH:mm:ss" :value="value2">
-                <template #title>
-                    <div style="display: inline-flex; align-items: center">
-                        <el-icon style="margin-right: 4px" :size="12">
-                            <Calendar />
-                        </el-icon>
-                        Still to go until next month
-                    </div>
-                </template>
-            </el-countdown>
-            <div class="countdown-footer">{{ value2.format('YYYY-MM-DD') }}</div>
-        </el-col>
-    </el-row>
-    <br>
-    <!--硬件状态的三个基本功能-->
-    <el-row :gutter="16">
-        <el-col :span="span">
-            <div class="statistic-card">
-                <el-statistic :value="batteryCharge">
-                    <template #title>
-                        <div style="display: inline-flex; align-items: center">
-                            剩余电量
+    <!-- <h6>信息展示</h6>
+    <el-divider /> -->
+    <!-- //第二行的四个信息 -->
+    <el-row justify="space-evenly">
 
-                        </div>
-                    </template>
-                    <template #suffix>%</template>
-                </el-statistic>
-                <div class="statistic-footer">
-                    <div class="footer-item">
-                        <span>目前已消耗</span>
-                        <span class="red">
-                            {{ 100 - batteryCharge }}
-                            <el-icon>
-                                <CaretBottom />
-                            </el-icon>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </el-col>
-
-
-        <el-col :span="span">
-            <div class="statistic-card">
-                <el-statistic :value="5600">
-                    <template #title>
-                        <div style="display: inline-flex; align-items: center">
-                            风扇负压
-                            <el-tooltip effect="dark" content="代表当前风扇所产生的平均负压" placement="top">
-                                <el-icon style="margin-left: 4px" :size="12">
-                                    <Warning />
-                                </el-icon>
-                            </el-tooltip>
-                        </div>
-                    </template>
-                    <template #suffix>Pa</template>
-                </el-statistic>
-                <div class="statistic-footer">
-                    <div class="footer-item">
-                        <span>于一分钟前</span>
-                        <span class="green">
-                            12%
-                            <el-icon>
-                                <CaretTop />
-                            </el-icon>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </el-col>
-
-
-        <el-col :span="span">
+        <el-col span="6">
             <div class="statistic-card">
                 <el-statistic :value="56" title="">
                     <template #title>
@@ -173,81 +95,297 @@ function reset() {
                 </div>
             </div>
         </el-col>
-        <br>
-        <!--环形进度条-->
-        <el-row :gutter="120">
-            <el-col :span="6">
-                <el-progress type="dashboard" :percentage="80">
-                    <template #default="{ percentage }">
-                        <span class="percentage-value">{{ batteryCharge }}%</span>
-                        <br>
-                        <span class="percentage-label">电池电量</span>
+        <el-col span="6">
+            <div class="statistic-card">
+                <el-statistic :value="5600">
+                    <template #title>
+                        <div style="display: inline-flex; align-items: center">
+                            风扇负压
+                            <el-tooltip effect="dark" content="代表当前风扇所产生的平均负压" placement="top">
+                                <el-icon style="margin-left: 4px" :size="12">
+                                    <Warning />
+                                </el-icon>
+                            </el-tooltip>
+                        </div>
                     </template>
-                </el-progress>
-            </el-col>
-
-            <el-col :span="6">
-                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
-            </el-col>
-
-            <el-col :span="6">
-                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
-            </el-col>
-
-            <el-col :span="6">
-                <el-progress type="dashboard" :percentage="percentage" :color="colors" />
-            </el-col>
-            <div class="demo-progress">
-
-
-
-
-
-
-
-                <div>
-                    <el-button-group>
-                        <el-button :icon="Minus" @click="decrease" />
-                        <el-button :icon="Plus" @click="increase" />
-                    </el-button-group>
-
-                    <el-button-group>
-                        <el-button :icon="Minus" @click="decrease" />
-                        <el-button :icon="Plus" @click="increase" />
-                    </el-button-group>
+                    <template #suffix>Pa</template>
+                </el-statistic>
+                <div class="statistic-footer">
+                    <div class="footer-item">
+                        <span>于一分钟前</span>
+                        <span class="green">
+                            12%
+                            <el-icon>
+                                <CaretTop />
+                            </el-icon>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </el-row>
+        </el-col>
+        <el-col span="6">
+            <!--环形进度条-->
+            <el-row gutter="10" justify="space-evenly">
+                <el-col>
+                    <el-progress type="dashboard" :percentage="80">
+                        <template #default="">
+                            <span class="percentage-value">{{ batteryCharge }}%</span>
+                            <br>
+                            <span class="percentage-label">电池电量</span>
+                        </template>
+                    </el-progress>
+                </el-col>
+            </el-row>
+        </el-col>
+        <el-col span="6">
+            <!--环形进度条-->
+            <el-row gutter="10" justify="space-evenly">
+                <el-col>
+                    <el-progress type="dashboard" :percentage="80">
+                        <template #default="">
+                            <span class="percentage-value">{{ batteryCharge }}%</span>
+                            <br>
+                            <span class="percentage-label">电池电量</span>
+                        </template>
+                    </el-progress>
+                </el-col>
+            </el-row>
+        </el-col>
+    </el-row>
+    <el-divider />
+    <!-- //第三行的四个信息 -->
+    <el-row justify="space-evenly">
+
+        <el-col span="6">
+            <div class="statistic-card">
+                <el-statistic :value="56" title="">
+                    <template #title>
+                        <div style="display: inline-flex; align-items: center">
+                            通信质量
+                            <el-tooltip effect="dark" content="当前的通信延迟" placement="top">
+                                <el-icon style="margin-left: 4px" :size="12">
+                                    <Warning />
+                                </el-icon>
+                            </el-tooltip>
+                        </div>
+                    </template>
+                    <template #suffix>ms</template>
+                </el-statistic>
+                <div class="statistic-footer">
+                    <div class="footer-item">
+                        <span>than yesterday</span>
+                        <span class="green">
+                            16%
+                            <el-icon>
+                                <CaretTop />
+                            </el-icon>
+                        </span>
+                    </div>
+                    <div class="footer-item">
+                        <el-icon :size="14">
+                            <ArrowRight />
+                        </el-icon>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+        <el-col span="6">
+            <div class="statistic-card">
+                <el-statistic :value="5600">
+                    <template #title>
+                        <div style="display: inline-flex; align-items: center">
+                            风扇负压
+                            <el-tooltip effect="dark" content="代表当前风扇所产生的平均负压" placement="top">
+                                <el-icon style="margin-left: 4px" :size="12">
+                                    <Warning />
+                                </el-icon>
+                            </el-tooltip>
+                        </div>
+                    </template>
+                    <template #suffix>Pa</template>
+                </el-statistic>
+                <div class="statistic-footer">
+                    <div class="footer-item">
+                        <span>于一分钟前</span>
+                        <span class="green">
+                            12%
+                            <el-icon>
+                                <CaretTop />
+                            </el-icon>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+        <el-col span="6">
+            <div class="statistic-card">
+                <el-statistic :value="56" title="">
+                    <template #title>
+                        <div style="display: inline-flex; align-items: center">
+                            通信质量
+                            <el-tooltip effect="dark" content="当前的通信延迟" placement="top">
+                                <el-icon style="margin-left: 4px" :size="12">
+                                    <Warning />
+                                </el-icon>
+                            </el-tooltip>
+                        </div>
+                    </template>
+                    <template #suffix>ms</template>
+                </el-statistic>
+                <div class="statistic-footer">
+                    <div class="footer-item">
+                        <span>than yesterday</span>
+                        <span class="green">
+                            16%
+                            <el-icon>
+                                <CaretTop />
+                            </el-icon>
+                        </span>
+                    </div>
+                    <div class="footer-item">
+                        <el-icon :size="14">
+                            <ArrowRight />
+                        </el-icon>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+        <el-col span="6">
+            <div class="statistic-card">
+                <el-statistic :value="5600">
+                    <template #title>
+                        <div style="display: inline-flex; align-items: center">
+                            风扇负压
+                            <el-tooltip effect="dark" content="代表当前风扇所产生的平均负压" placement="top">
+                                <el-icon style="margin-left: 4px" :size="12">
+                                    <Warning />
+                                </el-icon>
+                            </el-tooltip>
+                        </div>
+                    </template>
+                    <template #suffix>Pa</template>
+                </el-statistic>
+                <div class="statistic-footer">
+                    <div class="footer-item">
+                        <span>于一分钟前</span>
+                        <span class="green">
+                            12%
+                            <el-icon>
+                                <CaretTop />
+                            </el-icon>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+    </el-row>
+    <el-divider />
+    <!-- //第四行的三个信息 -->
+    <el-row justify="space-evenly">
+        <el-col :span="8">
+            <el-countdown title="电机转速" :value="value1" />
+        </el-col>
+
+        <el-col :span="8">
+            <el-countdown title="运行时间" format="HH:mm:ss" :value="value1" />
+            <!-- <el-button class="countdown-footer" type="primary" @click="reset">
+                Reset
+            </el-button> -->
+        </el-col>
+
+        <el-col :span="8">
+            <el-countdown format="HH:mm:ss" :value="value2">
+                <template #title>
+                    <div style="display: inline-flex; align-items: center">
+                        <el-icon style="margin-right: 4px" :size="12">
+                            <Calendar />
+                        </el-icon>
+                        当前时间
+                    </div>
+                </template>
+            </el-countdown>
+            <div class="countdown-footer">{{ value2.format('YYYY-MM-DD') }}</div>
+        </el-col>
+    </el-row>
+    <el-divider />
+
+    <el-row justify="space-evenly">
+        <el-col span="6">
+            <!--环形进度条-->
+            <el-progress type="dashboard" :percentage="80">
+                <template #default="">
+                    <span class="percentage-value">{{ batteryCharge }}%</span>
+                    <br>
+                    <span class="percentage-label">电池电量</span>
+                </template>
+            </el-progress>
+        </el-col>
+        <el-col span="12">
+            <el-slider v-model="value" vertical height="100px" />
+            <el-slider v-model="value" vertical height="100px" />
+            <el-slider v-model="value" vertical height="100px" />
+        </el-col>
+        <el-col span="6">
+
+            <el-switch v-model="value" active-text="Open" inactive-text="Close" />
+            <br>
+
+            <el-switch v-model="value" active-text="Open" inactive-text="Close" />
+            <br>
+
+            <el-switch v-model="value" active-text="Open" inactive-text="Close" />
+        </el-col>
+        <el-col span="6">
+
+            <el-switch v-model="value" active-text="Open" inactive-text="Close" />
+            <br>
+
+            <el-switch v-model="value" active-text="Open" inactive-text="Close" />
+            <br>
+
+            <el-switch v-model="value" active-text="Open" inactive-text="Close" />
+        </el-col>
+    </el-row>
+    <el-divider />
+
+    <!-- 硬件状态的三个基本功能
+    <el-row :gutter="16">
+        <el-col :span="span">
+            <div class="statistic-card">
+                <el-statistic :value="batteryCharge">
+                    <template #title>
+                        <div style="display: inline-flex; align-items: center">
+                            剩余电量
+
+                        </div>
+                    </template>
+                    <template #suffix>%</template>
+                </el-statistic>
+                <div class="statistic-footer">
+                    <div class="footer-item">
+                        <span>目前已消耗</span>
+                        <span class="red">
+                            {{ 100 - batteryCharge }}
+                            <el-icon>
+                                <CaretBottom />
+                            </el-icon>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </el-col> -->
+    <!-- 条形进度条
+    <el-row justify="space-evenly">
         <el-col>
             <div class="demo-progress">
                 <el-progress :percentage="50" :stroke-width="15" striped />
                 <el-progress :percentage="30" :stroke-width="15" status="warning" striped striped-flow />
                 <el-progress :percentage="100" :stroke-width="15" status="success" striped striped-flow
                     :duration="10" />
-
-                <el-button-group>
-                    <el-button :icon="Minus" @click="decrease" />
-                    <el-button :icon="Plus" @click="increase" />
-                </el-button-group>
             </div>
         </el-col>
-        <!--实现按钮功能-->
-        <el-col :span="span">
-            <div>
-                <el-switch v-model="value" active-text="Open" inactive-text="Close" />
-                <div>
-                    <el-switch v-model="value" active-text="Open" inactive-text="Close" />
-                    <div>
-                        <el-switch v-model="value" active-text="Open" inactive-text="Close" />
-                        <div>
-                            <el-switch v-model="value" active-text="Open" inactive-text="Close" />
+    </el-row> -->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </el-col>
-    </el-row>
 
 </template>
 
@@ -305,6 +443,7 @@ function reset() {
 .demo-progress .el-progress--line {
     margin-bottom: 15px;
     max-width: 600px;
+
 }
 
 .demo-progress .el-progress--circle {
