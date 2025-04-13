@@ -1,7 +1,7 @@
 import { componentSizes } from 'element-plus'
 import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 import Home from '../views/Home/index.vue'
-import Hardwave from '../views/Home/components/Hardwave.vue'
+import Hardwave from '../views/Home/components/Hardware.vue'
 import Data from '../views/Home/components/Data.vue'
 const router = createRouter({
   history: createMemoryHistory(import.meta.env.BASE_URL),

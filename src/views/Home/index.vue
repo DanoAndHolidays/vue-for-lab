@@ -1,6 +1,6 @@
 <script setup>
 import Header from './components/Header.vue';
-import Hardwave from './components/Hardwave.vue';
+import Hardwave from './components/Hardware.vue';
 import Menu from './components/Menu.vue';
 </script>
 <template>
