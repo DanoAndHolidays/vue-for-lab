@@ -24,7 +24,7 @@ const handleClose = (key: string, keyPath: string[]) => {
                         <setting />
                     </el-icon>
                     <span>
-                        <RouterLink to="/">
+                        <RouterLink to="/" class="link">
                             硬件状态
                         </RouterLink>
                     </span>
@@ -36,7 +36,7 @@ const handleClose = (key: string, keyPath: string[]) => {
                     </el-icon>
                     <span>
                         <RouterLink to="/Data" class="link">
-                            数据分析
+                            数据展示
                         </RouterLink>
                     </span>
                 </el-menu-item>
@@ -44,13 +44,20 @@ const handleClose = (key: string, keyPath: string[]) => {
                     <el-icon>
                         <icon-menu />
                     </el-icon>
-                    <span>待定功能</span>
+
+                    <span>
+                        <RouterLink to="/Data" class="link">
+                            数据分析
+                        </RouterLink>
+                    </span>
                 </el-menu-item>
                 <el-menu-item index="4">
                     <el-icon>
-                        <icon-menu />
+                        <document />
                     </el-icon>
-                    <span>待定功能</span>
+                    <RouterLink to="/Data" class="link">
+                        处理记录
+                    </RouterLink>
                 </el-menu-item>
 
             </el-menu>
@@ -59,10 +66,10 @@ const handleClose = (key: string, keyPath: string[]) => {
     <el-menu :default-openeds="['1']">
         <el-sub-menu index="1">
             <template #title>
-                Navigator One
+                建筑组信息
             </template>
             <el-menu-item-group>
-                <template #title>Group 1</template>
+                <template #title>组一</template>
                 <el-menu-item index="1-1">Option 1</el-menu-item>
                 <el-menu-item index="1-2">Option 2</el-menu-item>
             </el-menu-item-group>

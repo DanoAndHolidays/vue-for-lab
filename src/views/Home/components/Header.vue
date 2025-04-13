@@ -6,20 +6,25 @@
         </el-menu-item>
         <el-sub-menu index="2">
             <template #title>终端设置</template>
-            <el-menu-item index="2-1">item one</el-menu-item>
-            <el-menu-item index="2-2">item two</el-menu-item>
-            <el-menu-item index="2-3">item three</el-menu-item>
+            <el-menu-item index="2-1">导出数据</el-menu-item>
+            <el-menu-item index="2-2">导入数据</el-menu-item>
+            <el-menu-item index="2-3">主题</el-menu-item>
             <el-sub-menu index="2-4">
-                <template #title>item four</template>
-                <el-menu-item index="2-4-1">item one</el-menu-item>
-                <el-menu-item index="2-4-2">item two</el-menu-item>
-                <el-menu-item index="2-4-3">item three</el-menu-item>
+                <template #title>设置</template>
+                <el-menu-item index="2-4-1">文件设置</el-menu-item>
+                <el-menu-item index="2-4-2">获取设置</el-menu-item>
+                <el-menu-item index="2-4-3">监测设置</el-menu-item>
             </el-sub-menu>
         </el-sub-menu>
-        <el-menu-item index="3" disabled>Info</el-menu-item>
-        <el-menu-item index="4" disabled>待定功能</el-menu-item>
+        <el-menu-item index="3">数据中心</el-menu-item>
+        <el-menu-item index="4">开发者</el-menu-item>
         <el-menu-item index="5">
             <RouterLink to="/Store" class="link">产品介绍</RouterLink>
+
+        </el-menu-item>
+        <el-menu-item index="6">
+            <RouterLink to="/Store" class="link">获取帮助</RouterLink>
+
         </el-menu-item>
     </el-menu>
 </template>
