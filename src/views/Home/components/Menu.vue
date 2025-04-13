@@ -35,7 +35,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 
                     </el-icon>
                     <span>
-                        <RouterLink to="/Data">
+                        <RouterLink to="/Data" class="link">
                             数据分析
                         </RouterLink>
                     </span>

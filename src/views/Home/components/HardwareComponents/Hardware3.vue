@@ -2,6 +2,7 @@
     <el-row justify="space-evenly">
         <el-col :span="8">
             <p>运行状态</p>
+            //报错不用管
             <p>{{ status.status1 }}</p>
         </el-col>
 

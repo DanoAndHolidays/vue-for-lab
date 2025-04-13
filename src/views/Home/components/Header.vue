@@ -2,7 +2,7 @@
     <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" background-color="#545c64"
         text-color="#fff" active-text-color="#ffd04b" @select="handleSelect">
         <el-menu-item index="1">
-            <RouterLink to="/">分析监测终端界面</RouterLink>
+            <RouterLink to="/" class="link">分析监测终端界面</RouterLink>
         </el-menu-item>
         <el-sub-menu index="2">
             <template #title>终端设置</template>
@@ -19,7 +19,7 @@
         <el-menu-item index="3" disabled>Info</el-menu-item>
         <el-menu-item index="4" disabled>待定功能</el-menu-item>
         <el-menu-item index="5">
-            <RouterLink to="/Store">产品介绍</RouterLink>
+            <RouterLink to="/Store" class="link">产品介绍</RouterLink>
         </el-menu-item>
     </el-menu>
 </template>
